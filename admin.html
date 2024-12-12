@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Campus Chronicles</title>
+    <link rel="stylesheet" href="admin_styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <div class="admin-container">
+        <nav class="admin-nav">
+            <div class="admin-logo">
+                <h1>Campus Chronicles</h1>
+                <p>Admin Dashboard</p>
+            </div>
+            <div class="admin-menu">
+                <a href="/" class="admin-menu-item"><i class="fas fa-home"></i> View Site</a>
+                <a href="#" class="admin-menu-item active"><i class="fas fa-newspaper"></i> Manage News</a>
+                <a href="#" class="admin-menu-item" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </nav>
+
+        <main class="admin-main">
+            <div class="admin-header">
+                <h2>Manage News Articles</h2>
+                <button class="add-news-btn" onclick="showNewsForm()">
+                    <i class="fas fa-plus"></i> Add New Article
+                </button>
+            </div>
+
+            <div class="news-form-container" id="newsForm" style="display: none;">
+                <form id="addNewsForm" class="news-form">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" name="category" required>
+                            <option value="campus">Campus News</option>
+                            <option value="sports">Sports</option>
+                            <option value="events">Events</option>
+                            <option value="academic">Academic</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Content</label>
+                        <textarea id="content" name="content" rows="6" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="mediaType">Media Type</label>
+                        <select id="mediaType" name="mediaType" onchange="toggleMediaInput()">
+                            <option value="image">Image</option>
+                            <option value="video">Video</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="mediaInputGroup">
+                        <label for="mediaFile">Upload Media</label>
+                        <input type="file" id="mediaFile" name="mediaFile" accept="image/*,video/*">
+                        <p class="hint">Or provide a URL:</p>
+                        <input type="url" id="mediaUrl" name="mediaUrl" placeholder="https://...">
+                    </div>
+                    <div class="form-group">
+                        <label for="keywords">Keywords (comma-separated)</label>
+                        <input type="text" id="keywords" name="keywords">
+                    </div>
+                    <div class="notification" id="notification">
+                        <i class="fas fa-check-circle success-icon"></i>
+                        <i class="fas fa-exclamation-circle error-icon"></i>
+                        <span class="notification-message"></span>
+                        <button class="notification-close" onclick="hideNotification()">×</button>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Publish Article</button>
+                        <button type="button" class="cancel-btn" onclick="hideNewsForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="news-list" id="newsList">
+                <!-- News articles will be listed here -->
+            </div>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

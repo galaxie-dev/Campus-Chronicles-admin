@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article - Campus Chronicles</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="article_styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">Campus Chronicles</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/#latest">Latest</a>
+                <a href="/#categories">Categories</a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="article-main">
+        <article class="full-article">
+            <!-- Article content will be dynamically inserted here -->
+        </article>
+    </main>
+
+    <div class="theme-switcher">
+        <button class="theme-btn light" data-theme="light">
+            <i class="fas fa-sun"></i>
+        </button>
+        <button class="theme-btn dark" data-theme="dark">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="theme-btn cyberpunk" data-theme="cyberpunk">
+            <i class="fas fa-robot"></i>
+        </button>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Campus Chronicles</h3>
+                <p>Your trusted source for campus news and updates.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/#latest">Latest News</a></li>
+                    <li><a href="/#categories">Categories</a></li>
+                    <li><a href="/#about">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Campus Chronicles. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.js"></script>
+    <script src="article.js"></script>
+    <script>
+        // Theme Switcher
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const theme = btn.dataset.theme;
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+            });
+        });
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.querySelector('i').classList.toggle('fa-bars');
+            mobileMenu.querySelector('i').classList.toggle('fa-times');
+        });
+    </script>
+</body>
+</html>
