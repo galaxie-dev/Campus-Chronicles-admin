@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         
         const formData = new FormData(event.target);
+        const editId = event.target.dataset.editId; 
         const mediaFile = formData.get('mediaFile');
         const mediaUrl = formData.get('mediaUrl');
 
